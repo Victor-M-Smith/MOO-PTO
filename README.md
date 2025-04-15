@@ -1,3 +1,18 @@
+# MOO-PTO
+MOO-PTO (Multi-Objective Optimization for Program Trace Optimization) is an extension of the PTO framework that introduces support for multi-objective optimization. This extension gives users more flexibility and realism for real-world applications by enabling them to use the Non-dominated Sorting Genetic Algorithm II (NSGA-II) to solve problems with two or more competing objectives.
+
+# Added Solver
+NSGA-II (Non-dominated Sorting Genetic Algorithm II): A popular genetic algorithm for multi-objective optimisation using crowding distance and non-dominated sorting to maintain a diverse Pareto front.
+
+# Added Benchmark Problems
+OneMinMax: A simple binary vector problem that illustrates conflicting goals with two objectives: to maximise the number of ones and the number of zeros in a binary vector simultaneously.
+
+DoubleSphere: A real-valued bi-objective problem where each objective is the distance to a separate target point (sphere center), modeling a smooth multi-objective landscape.
+
+MOTSP (Multi-Objective Traveling Salesman Problem): A bi-objective variant of TSP where both travel distance and time are optimized simultaneously.
+
+LOTZ (Leading Ones and Trailing Zeros): A classic benchmark in evolutionary computation where the objectives are the number of leading ones and trailing zeros in a binary vector.
+
 # PTO
 Program Trace Optimisation is a system for 'universal metaheuristic optimization made easy'. This is achieved by strictly separating the problem from the search algorithm.
 New problem definitions and new generic search algorithms ('solvers') can be added to PTO easily and independently, and any algorithm can be used on any problem. PTO automatically extracts knowledge from the problem specification and designs search operators for the problem. The operators designed by PTO for standard representations coincide with existing ones, but PTO automatically designs operators for arbitrary representations.

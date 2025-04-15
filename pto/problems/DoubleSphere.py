@@ -1,5 +1,4 @@
 from pto import run, rnd
-import numpy as np
 
 #################
 # INSTANCE DATA #
@@ -13,8 +12,8 @@ lower_search_bound = -10  # Minimum value for each element in solution vector.
 upper_search_bound = 10  # Maximum value for each element in solution vector.
 
 # Define fixed centers for the spheres
-sphere_1_center = np.array([-5.0] * size)  # Center of Sphere 1
-sphere_2_center = np.array([5.0] * size)  # Center of Sphere 2
+sphere_1_center = [-5.0] * size  # Center of Sphere 1
+sphere_2_center = [5.0] * size  # Center of Sphere 2
 
 ######################
 # SOLUTION GENERATOR #
@@ -53,8 +52,9 @@ def fitness(solution, sphere_1_center, sphere_2_center):
     Returns:
         tuple: The fitness values for both objectives (distance to each center).
     """
-    sphere1 = np.sqrt(sum((solution - sphere_1_center) ** 2))
-    sphere2 = np.sqrt(sum((solution - sphere_2_center) ** 2))
+    sphere1 = sum((solution[i] - sphere_1_center[i]) ** 2 for i in range(size)) ** 0.5
+    sphere2 = sum((solution[i] - sphere_2_center[i]) ** 2 for i in range(size)) ** 0.5
+
     return sphere1, sphere2
 
 

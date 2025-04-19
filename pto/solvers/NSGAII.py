@@ -90,9 +90,9 @@ class NSGAII:
             population, fitnesses_population
         )
         if self.return_history:
-            return p_front, population, self.history
+            return p_front, self.history
         else:
-            return p_front, population
+            return p_front
 
     def create_population(self):
         return [self.op.create_ind() for _ in range(self.population_size)]
@@ -259,14 +259,10 @@ if __name__ == "__main__":
         n_generations=50,
         population_size=10,
         verbose=False,
-        return_history=False,
+        return_history=True,
     )
-    pareto_front, population = NSGA_II()
+    pareto_front_pheno, history = NSGA_II()
 
-    print(f"Pareto front size: {len(pareto_front)}\n")
-    print(f"Pareto front phenotype: {pareto_front}\n")
-
-    pareto_front_fitnesses = []
-    for i in range(len(pareto_front)):
-        pareto_front_fitnesses.append(BinaryProblem.evaluate_ind(None, pareto_front[i]))
-    print(f"Pareto front fitnesses {pareto_front_fitnesses}")
+    print(f"Pareto front size: {len(pareto_front_pheno)}\n")
+    print(f"Pareto front phenotype: {pareto_front_pheno}\n")
+    print(f"Pareto front fitnesses {history['p_front_fitnesses'][-1]}")

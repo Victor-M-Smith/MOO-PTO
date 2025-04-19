@@ -93,21 +93,15 @@ if __name__ == "__main__":
         solver_args={
             "n_generations": 50,
             "population_size": 10,
-            "return_history": False,
+            "verbose": False,
+            "return_history": True,
         },
         better=better,
     )
 
     # print("Raw result:", result)
-    pareto_front, population = result
+    pareto_front_pheno, pareto_front_geno, history = result
 
-    print(f"Pareto front size: {len(pareto_front)}\n")
-    print(f"Pareto front solutions (phenotype): {pareto_front}\n")
-
-    pareto_front_fitnesses = []
-    for i in range(len(pareto_front)):
-        pareto_front_fitnesses.append(
-            fitness(pareto_front[i], size, distance_matrix, time_matrix)
-        )
-
-    print(f"Pareto front fitnesses: {pareto_front_fitnesses}")
+    print(f"Pareto front size: {len(pareto_front_pheno)}\n")
+    print(f"Pareto front solutions (phenotype): {pareto_front_pheno}\n")
+    print(f"Pareto front fitnesses {history['p_front_fitnesses'][-1]}")
